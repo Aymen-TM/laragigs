@@ -2,7 +2,7 @@
 
 @include('partials._search')
 @section('content')
-<a href="index.html" class="inline-block text-black ml-4 mb-4"
+<a href="/" class="inline-block text-black ml-4 mb-4"
                 ><i class="fa-solid fa-arrow-left"></i> Back
             </a>
             <div class="mx-4">
@@ -19,14 +19,7 @@
                         <h3 class="text-2xl mb-2">{{$listing->title}}</h3>
                         <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
                         <ul class="flex">
-                            <?php $tags = explode(",",$listing->tags) ?>
-                            @foreach ($tags as $tag)
-                                <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs"
-                                    >
-                                <a href="#">{{$tag}}</a>
-                                </li>   
-                            @endforeach
+                                <x-listing-tag :tags="$listing->tags" />    
                         </ul>
                         <div class="text-lg my-4">
                             <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
