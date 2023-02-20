@@ -16,13 +16,13 @@
                             alt=""
                         />
 
-                        <h3 class="text-2xl mb-2">{{$listing->title}}</h3>
-                        <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
+                        <h3 class="text-2xl mb-2">{{$listings->title}}</h3>
+                        <div class="text-xl font-bold mb-4">{{$listings->company}}</div>
                         <ul class="flex">
-                                <x-listing-tag :tags="$listing->tags" />    
+                                <x-listing-tag :tags="$listings->tags" />    
                         </ul>
                         <div class="text-lg my-4">
-                            <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
+                            <i class="fa-solid fa-location-dot"></i> {{$listings->location}}
                         </div>
                         <div class="border border-gray-200 w-full mb-6"></div>
                         <div>
@@ -31,26 +31,32 @@
                             </h3>
                             <div class="text-lg space-y-6">
                                 <p>
-                                    {{$listing->description}}
+                                    {{$listings->description}}
                                 </p>
                                 <p>
-                                    {{$listing->description}}
+                                    {{$listings->description}}
                                 </p>
 
                                 <a
-                                    href={{$listing->email}}
+                                    href={{$listings->email}}
                                     class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80"
                                     ><i class="fa-solid fa-envelope"></i>
                                     Contact Employer</a
                                 >
 
                                 <a
-                                    href={{$listing->website}}
+                                    href={{$listings->website}}
                                     target="_blank"
                                     class="block bg-black text-white py-2 rounded-xl hover:opacity-80"
                                     ><i class="fa-solid fa-globe"></i> Visit
                                     Website</a
                                 >
+                                <a
+                                href="{{$listings->id}}/edit"
+                                target="_blank"
+                                class="block bg-black text-white py-2 rounded-xl hover:opacity-80"
+                                ><i class="fa-solid fa-pencil"></i> Edit Post</a
+                            >
                             </div>
                         </div>
                     </div>
