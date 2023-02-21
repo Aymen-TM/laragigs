@@ -57,6 +57,11 @@
                                 class="block bg-black text-white py-2 rounded-xl hover:opacity-80"
                                 ><i class="fa-solid fa-pencil"></i> Edit Post</a
                             >
+                            <form method="POST" action="{{$listings->id}}/delete">
+                                @csrf
+                                @method('DELETE')
+                                <button class=" bg-gray-800 text-white w-full py-2 rounded-xl hover:opacity-80 " type="submit" ><i class="fa-solid fa-trash mr-1"></i>DELETE</button>
+                            </form>
                             </div>
                         </div>
                     </div>
