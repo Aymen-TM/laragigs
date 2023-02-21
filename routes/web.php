@@ -16,24 +16,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Home Page Route
 Route::get('/', [ListingController::class,'index']);
-Route::get('/listing/create', [ListingController::class,'create']);
-Route::post('/listing', [ListingController::class,'store']);
-Route::get('/listing/{listing}/edit', [ListingController::class,'edit']);
-Route::delete('/listing/{listing}/delete', [ListingController::class,'destroy']);
-Route::put('/listing/{listing}', [ListingController::class,'update']);
+//Create Page Route
+Route::get('/listing/create', [ListingController::class,'create'])->middleware("auth");
+//Add a listing Route
+Route::post('/listing', [ListingController::class,'store'])->middleware("auth");
+//Manage Listings Page Route
+Route::get('/listings/manage', [ListingController::class,'manage'])->middleware("auth");
+//Edit Page Route
+Route::get('/listing/{listing}/edit', [ListingController::class,'edit'])->middleware("auth");
+//Delete a listing Route
+Route::delete('/listing/{listing}/delete', [ListingController::class,'destroy'])->middleware("auth");
+//Update a listing Route
+Route::put('/listing/{listing}', [ListingController::class,'update'])->middleware("auth");
+//Show one listing
 Route::get('/listing/{listing}', [ListingController::class,'show']);
 
 
+//Register Page Route
+Route::get('/register', [UserController::class,'create'])->middleware("guest");
 
-Route::get('/register', [UserController::class,'create']);
+//Add user (Register)
 Route::post('/users', [UserController::class,'store']);
 
+//Logout Route
 Route::post('/logout', [UserController::class,'logout']);
 
-Route::get('/login', [UserController::class,'login']);
+//Login Page Route
+Route::get('/login', [UserController::class,'login'])->name("login")->middleware("guest");
 
+//Authenticate user Route
 Route::post('/users/authenticate', [UserController::class,'authenticate']);
+
+
 
 
 
